@@ -136,7 +136,7 @@ services.AddPartnerRefitClient<ICommissionsApi>(
 
 ### Общие контракты
 
-- **`PartnerSystem.Shared`** — `ApiError`, `AppException`, `GlobalExceptionHandler`, `RefitExceptionHandler`, health check tags/paths, enum'ы, `JsonOptions`.
+- **`PartnerSystem.Shared`** — `ApiError`, `AppException`, `RefitExceptionHandler`, enum'ы, `JsonOptions`.
 - **`PartnerSystem.Contracts`** — Refit-интерфейсы и DTO.
 
 ---
@@ -188,32 +188,6 @@ Frank (отдельная ветка)
 ### Кошельки
 
 Созданы для всех 6 пользователей, начальный баланс — 0.
-
----
-
-## Полезные команды
-
-```bash
-# Логи
-docker compose logs -f commission-service
-
-# Перезапуск одного сервиса
-docker compose up --build -d commission-service
-
-# Список топиков
-docker exec -it kafka /opt/kafka/bin/kafka-topics.sh \
-  --bootstrap-server localhost:9092 --list
-
-# Последние сообщения
-docker exec -it kafka /opt/kafka/bin/kafka-console-consumer.sh \
-  --bootstrap-server localhost:9092 \
-  --topic profit-events --from-beginning --max-messages 10
-
-# Consumer group lag
-docker exec -it kafka /opt/kafka/bin/kafka-consumer-groups.sh \
-  --bootstrap-server localhost:9092 \
-  --describe --group commission-service
-```
 
 ---
 
